@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: node
-          image: cloud.canister.io:5000/wolnik/nodeskaff
+          image: surekhadock2020/k8s-helloapi:latest
           ports:
             - containerPort: 3000
       imagePullSecrets:

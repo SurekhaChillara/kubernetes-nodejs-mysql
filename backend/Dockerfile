@@ -1,10 +1,19 @@
-FROM node:8.12.0-alpine
+FROM node:latest
 
-RUN mkdir -p /opt/backend
-ADD package.json /opt/backend
-WORKDIR /opt/backend
-RUN npm install
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
+RUN mkdir -p /usr/src/app
 
-ADD . /opt/backend
+WORKDIR /usr/src/app
+
+COPY package.json /usr/src/app/package.json
+
+RUN npm i
+
+COPY . /usr/src/app/
+
+EXPOSE 9095
+
+CMD [ "npm", "run" "dev"]
+
+ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
+
+RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
