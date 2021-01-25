@@ -16,7 +16,7 @@ const con = mysql.createConnection({
 
 con.connect(function (err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("Connected to MYSQL DB!");
 });
 app.get('/hello', function (req, res) {
   res.send('Hello Stranger!');

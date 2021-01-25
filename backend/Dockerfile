@@ -6,14 +6,13 @@ WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/package.json
 
-RUN npm i
+RUN npm install \
+ && npm install express \
+ && npm install mysql
 
 COPY . /usr/src/app/
 
-EXPOSE 9095
+EXPOSE 9191
 
-CMD [ "npm", "run" "dev"]
-
-ENTRYPOINT ["sh", "/usr/local/bin/docker-entrypoint.sh"]
-
-RUN ["chmod", "+x", "/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT [ "npm","run","dev"]
+# CMD [ "npm", "run" "dev"]
